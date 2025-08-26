@@ -1,2 +1,341 @@
-# shokudanren-nagano
-食団連長野支部のホームページ
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食団連長野支部</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * グローバルスタイル
+         * 全体的なフォント、背景色、基本的なレイアウトを設定
+         */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f7f7f7;
+            line-height: 1.6;
+        }
+
+        /*
+         * ヘッダーのスタイル
+         * ナビゲーションとロゴを配置
+         */
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.5rem 0;
+            transition: border-bottom 0.3s ease;
+        }
+        .nav-menu a:hover {
+            border-bottom: 2px solid white;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+
+        /*
+         * メインコンテンツのスタイル
+         * メインビジュアル、セクション、カードレイアウト
+         */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/62804b/ffffff?text=長野の豊かな自然');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 10rem 2rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #004d99;
+            display: inline-block;
+        }
+
+        .philosophy {
+            text-align: center;
+            font-style: italic;
+        }
+        .philosophy h2 {
+            font-size: 2.5rem;
+            color: #004d99;
+            margin-bottom: 1rem;
+        }
+        .philosophy p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .news-container, .partners-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .news-item, .partner-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .news-item:hover, .partner-item:hover {
+            transform: translateY(-5px);
+        }
+        .news-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .news-category {
+            background-color: #004d99;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .news-title {
+            font-weight: 700;
+            text-decoration: none;
+            color: #004d99;
+            display: block;
+        }
+
+        /*
+         * フッターのスタイル
+         * 著作権情報とプライバシーポリシー
+         */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        /*
+         * レスポンシブデザイン
+         * スマートフォンでの表示調整
+         */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #004d99;
+                text-align: center;
+                gap: 0;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu a {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            .hero {
+                padding: 5rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+      ヘッダー
+      ロゴとナビゲーションメニューを含む
+    -->
+    <header>
+        <a href="#" class="logo">食団連長野支部</a>
+        <nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">トップページ</a></li>
+                <li><a href="#activities">活動紹介</a></li>
+                <li><a href="#join">入会案内</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+                <li><a href="#members">会員専用ページ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--
+      メインビジュアル
+      サイトの顔となる部分
+    -->
+    <main>
+        <section class="hero">
+            <h1>長野から、食の未来を創る</h1>
+            <p>私たちは、長野県の食と外食産業の発展を目指す、地域に根ざした活動をしています</p>
+        </section>
+
+        <!--
+          新着情報セクション
+          お知らせと活動報告をカード形式で表示
+        -->
+        <section id="news">
+            <h2 class="section-title">新着情報</h2>
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-date">2025年8月26日</div>
+                    <span class="news-category">お知らせ</span>
+                    <a href="#" class="news-title">食団連長野支部 設立記念セミナー開催のお知らせ</a>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025年8月20日</div>
+                    <span class="news-category">活動報告</span>
+                    <a href="#" class="news-title">第1回理事会・交流会開催のご報告</a>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025年8月15日</div>
+                    <span class="news-category">お知らせ</span>
+                    <a href="#" class="news-title">ホームページ開設および入会受付開始のご案内</a>
+                </div>
+            </div>
+        </section>
+
+        <!--
+          活動理念セクション
+          長野支部が目指す方向性を示す
+        -->
+        <section class="philosophy">
+            <h2 class="section-title">長野だからこそできること</h2>
+            <p>信州の豊かな食材、長い歴史を持つ食文化、そして食に携わる人々の熱意。私たちは、長野ならではの強みを活かし、地域の食産業が抱える課題を解決します。経営者や現場の声を集約し、具体的な政策提言や勉強会の開催を通じて、持続可能な未来を築くための活動を推進しています。<br>私たちの声を一つに、共に未来へ。食団連長野支部 始動。</p>
+        </section>
+
+        <!--
+          パートナーセクション
+          プラチナパートナーとゴールドパートナーをイメージ
+        -->
+        <section id="partners">
+            <h2 class="section-title">パートナー</h2>
+            <div class="partners-container">
+                <div class="partner-item">
+                    <img src="https://placehold.co/300x150/e6e6e6/000000?text=パートナーロゴ" alt="パートナーロゴ" style="width:100%; height:auto; border-radius: 5px;">
+                </div>
+                <div class="partner-item">
+                    <img src="https://placehold.co/300x150/e6e6e6/000000?text=パートナーロゴ" alt="パートナーロゴ" style="width:100%; height:auto; border-radius: 5px;">
+                </div>
+                <div class="partner-item">
+                    <img src="https://placehold.co/300x150/e6e6e6/000000?text=パートナーロゴ" alt="パートナーロゴ" style="width:100%; height:auto; border-radius: 5px;">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--
+      フッター
+      著作権情報やプライバシーポリシーへのリンク
+    -->
+    <footer>
+        &copy; 2025 食団連長野支部 All rights reserved.
+        <div>
+            <a href="#">プライバシーポリシー</a>
+        </div>
+    </footer>
+
+    <!--
+      JavaScript
+      ハンバーガーメニューの開閉機能
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
