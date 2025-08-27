@@ -1,0 +1,265 @@
+[index.html](https://github.com/user-attachments/files/22000853/index.html)
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食団連 長野支部</title>
+    <style>
+        /* CSSスタイル */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #ccc;
+        }
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 0;
+            background-image: url('https://picsum.photos/1200/600?random=1'); /* 長野の風景画像に置き換えてください */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .section {
+            background-color: #fff;
+            padding: 40px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #4CAF50; /* 長野らしさを意識した緑色 */
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .note-link {
+            text-align: right;
+        }
+        .event-calendar iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .member-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .member-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        .footer-links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* 会員限定ページ用スタイル */
+        #member-content {
+            display: none;
+        }
+        #password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content input {
+            padding: 8px;
+            margin: 10px 0;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://example.com/shokudanren-nagano-logo.png" alt="食団連 長野支部ロゴ" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#news">お知らせ・活動報告</a></li>
+                <li><a href="#events">イベントカレンダー</a></li>
+                <li><a href="#members">会員紹介</a></li>
+                <li><a href="#join">入会案内</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+                <li><a href="#" onclick="showPasswordModal(); return false;">会員限定ページ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <h1>長野の食を未来へつなぐ</h1>
+            <p>食団連長野支部は、信州の食産業を盛り上げるため、様々な活動を行っています。</p>
+        </section>
+
+        <section id="news" class="section">
+            <h2>お知らせ・活動報告</h2>
+            <article>
+                <h3>タイトル1：勉強会を開催しました</h3>
+                <p>2025年8月20日、〇〇をテーマに勉強会を開催しました。多くの会員にご参加いただき、活発な議論が交わされました...<a href="https://note.com" target="_blank">続きを読む</a></p>
+            </article>
+            <article>
+                <h3>タイトル2：交流会を実施しました</h3>
+                <p>会員同士の親睦を深めるため、交流会を開催しました。新たなビジネスのきっかけが生まれたようです...<a href="https://note.com" target="_blank">続きを読む</a></p>
+            </article>
+            <p class="note-link"><a href="https://note.com" target="_blank">→ 活動報告一覧（noteへ）</a></p>
+        </section>
+
+        <section id="events" class="section event-calendar">
+            <h2>イベントカレンダー</h2>
+            <iframe src="https://calendar.google.com/calendar/embed?src=ja.japanese%23holiday%40group.v.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </section>
+
+        <section id="members" class="section">
+            <h2>会員紹介</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <img src="https://picsum.photos/200/200?random=2" alt="会員画像">
+                    <h3>店舗名/企業名</h3>
+                    <p>事業内容：〇〇</p>
+                    <a href="#">詳細はこちら</a>
+                </div>
+                <div class="member-card">
+                    <img src="https://picsum.photos/200/200?random=3" alt="会員画像">
+                    <h3>店舗名/企業名</h3>
+                    <p>事業内容：〇〇</p>
+                    <a href="#">詳細はこちら</a>
+                </div>
+                </div>
+        </section>
+
+        <section id="join" class="section">
+            <h2>入会案内</h2>
+            <p>食団連長野支部では、長野の食産業を共に盛り上げていく仲間を募集しています。会員として、勉強会や交流会に参加し、事業の発展を目指しませんか？</p>
+            <p><a href="#contact">入会に関するお問い合わせはこちら</a></p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>お問い合わせ</h2>
+            <p>ご質問やご相談など、お気軽にお問い合わせください。</p>
+            <form>
+                <p>氏名：<input type="text"></p>
+                <p>メールアドレス：<input type="email"></p>
+                <p>内容：<textarea></textarea></p>
+                <p><button type="submit">送信</button></p>
+            </form>
+        </section>
+        
+        <section id="member-content">
+            <h2 style="color: #4CAF50;">会員限定コンテンツ</h2>
+            <p><strong>ようこそ、会員の皆様！</strong></p>
+            <p>このページでは、限定の資料や先行情報などを公開しています。</p>
+            <p>・議事録：ダウンロードはこちら</p>
+            <p>・次回イベントの先行案内：詳細はこちら</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 食団連 長野支部</p>
+        <p class="footer-links">
+            <a href="https://shokudanren.or.jp/" target="_blank">食団連 本部サイト</a>
+            <a href="#">プライバシーポリシー</a>
+        </p>
+    </footer>
+
+    <div id="password-modal">
+        <div class="modal-content">
+            <h3>会員限定ページ</h3>
+            <p>パスワードを入力してください。</p>
+            <input type="password" id="password-input">
+            <button onclick="checkPassword()">認証</button>
+            <p id="password-error" style="color: red;"></p>
+        </div>
+    </div>
+
+    <script>
+        // パスワード認証用JavaScript
+        function showPasswordModal() {
+            document.getElementById('password-modal').style.display = 'flex';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password-input').value;
+            const correctPassword = "password123"; // ここを任意のパスワードに変更してください
+            
+            if (password === correctPassword) {
+                document.getElementById('password-modal').style.display = 'none';
+                document.getElementById('member-content').style.display = 'block';
+                document.getElementById('password-error').textContent = '';
+                alert('認証に成功しました。');
+            } else {
+                document.getElementById('password-error').textContent = 'パスワードが違います。';
+            }
+        }
+    </script>
+
+</body>
+</html>
